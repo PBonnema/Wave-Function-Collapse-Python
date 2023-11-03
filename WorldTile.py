@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from typing import List, Optional
 
 from DrawableTile import DrawableTile
-from TileSetTile import TileSetTile, Color
+from TileSetTile import TileSetTile, TileSetColor
 
 
 @dataclass
@@ -22,19 +22,23 @@ class WorldTile:
     @property
     def isCollapsed(self) -> bool:
         return self.tileSetIndex is not None
-    
+
     @staticmethod
     def calculateOppositeNeighbourIndex(neighbourIndex) -> int:
         return (neighbourIndex + 4) % 8
-    
+
     def updateViewForCollapsed(self, tileSetTile: TileSetTile) -> None:
-        self.drawableTile.text = ""
-        self.drawableTile.setFill(tileSetTile.fill.value)
+        self.drawableTile.setImage(tileSetTile.image)
+        if tileSetTile.fill is not None:
+            self.drawableTile.setFill(tileSetTile.fill.value)
+        else:
+            self.drawableTile.setDrawRectangle(False)
+        self.drawableTile.text = tileSetTile.text
 
     def updateViewForEntropy(self) -> None:
         self.drawableTile.text = str(self.entropy)
-        
+
     def clearView(self) -> None:
+        self.drawableTile.setDrawRectangle(True)
+        self.drawableTile.setImage(None)
         self.updateViewForEntropy()
-        self.drawableTile.setFill(Color.WHITE.value)
-        

@@ -5,6 +5,14 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Python: Tile Set Processor",
+            "type": "python",
+            "request": "launch",
+            "program": "tile_set_processor/main.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
             "name": "Python: main.py",
             "type": "python",
             "request": "launch",

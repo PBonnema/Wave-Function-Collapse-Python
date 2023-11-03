@@ -19,7 +19,7 @@ class World:
             row: List[WorldTile] = []
             for x in range(width):
                 position: g.Point = g.Point(x * tileSize, y * tileSize)
-                drawableTile = DrawableTile(position, g.Point(tileSize, tileSize), window, str(self.__maxTileEntropy))
+                drawableTile = DrawableTile(position, g.Point(tileSize, tileSize), window, True, str(self.__maxTileEntropy))
 
                 # Fetch some neighbours that already exist
                 northNeighbour = worldTiles[-1][len(row)] if y > 0 else None

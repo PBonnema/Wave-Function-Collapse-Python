@@ -1,8 +1,9 @@
 ﻿from dataclasses import dataclass
 from enum import Enum
+from typing import Optional
 
 
-class Color(Enum):
+class TileSetColor(Enum):
     BROWN = "Brown"
     GREEN = "Green"
     BLUE = "Blue"
@@ -11,5 +12,6 @@ class Color(Enum):
 
 @dataclass
 class TileSetTile:
-    text: str
-    fill: Color
+    text: Optional[str]
+    fill: Optional[TileSetColor]
+    image: Optional[str]
