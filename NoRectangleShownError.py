@@ -1,0 +1,2 @@
+﻿class NoRectangleShownError(Exception):
+    pass

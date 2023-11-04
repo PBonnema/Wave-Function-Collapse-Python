@@ -1,5 +1,4 @@
 from typing import Optional
-
 import graphics as g
 
 from NoTilePossibilitiesError import NoTilePossibilitiesError
@@ -294,12 +293,12 @@ def main() -> None:
             world.clear()
             try:
                 while not world.doWaveFunctionCollapseStep():
-                    pass
+                    # pass
+                    window.update()
                     # window.getMouse()  # Pause to view result
-                    # g.update()
             except NoTilePossibilitiesError:
                 print("No tile possibilities remaining. Starting over...")
-            g.update()
+            window.update()
     finally:
         if window is not None:
             window.close()

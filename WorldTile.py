@@ -3,7 +3,8 @@ from dataclasses import dataclass
 from typing import List, Optional
 
 from DrawableTile import DrawableTile
-from TileSetTile import TileSetTile, TileSetColor
+from DrawableTileScope import DrawableTileScope
+from TileSetTile import TileSetTile
 
 
 @dataclass
@@ -45,3 +46,25 @@ class WorldTile:
         self.__drawableTile.setDrawRectangle(True)
         self.__drawableTile.setImage(None)
         self.updateViewForEntropy()
+
+    def updateViewForEntropyOfNeighbourUpdate(self) -> None:
+        if not self.isCollapsed:
+            self.__drawableTile.setFill("orange")
+        else:
+            self.__drawableTile.setDrawRectangle(True)
+            self.__drawableTile.setEdgeColor("orange")
+            self.__drawableTile.setEdgeThickness(5)
+
+    def updateViewForEntropyUpdate(self) -> None:
+        if not self.isCollapsed:
+            self.__drawableTile.setFill("blue")
+        else:
+            self.__drawableTile.setDrawRectangle(True)
+            self.__drawableTile.setEdgeColor("blue")
+            self.__drawableTile.setEdgeThickness(5)
+            
+    def startScopedDrawing(self) -> DrawableTileScope:
+        return self.__drawableTile.startScopedDrawing()
+
+    def startUnscopedDrawing(self) -> DrawableTileScope:
+        return self.__drawableTile.startUnscopedDrawing()
