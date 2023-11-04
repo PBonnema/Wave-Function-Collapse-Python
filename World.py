@@ -60,7 +60,7 @@ class World:
     def draw(self) -> None:
         for row in self.__tiles:
             for tile in row:
-                tile.drawableTile.draw()
+                tile.draw()
 
     def doWaveFunctionCollapseStep(self) -> bool:
         # Get list of lowest entropy tiles. Doesn't return already collapsed tiles.

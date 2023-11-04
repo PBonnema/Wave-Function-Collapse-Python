@@ -10,10 +10,13 @@ from TileSetTile import TileSetTile, TileSetColor
 class WorldTile:
     type Entropy = int
 
-    drawableTile: DrawableTile
+    __drawableTile: DrawableTile
     tileSetPossibilities: List[bool]
     neighbours: List[Optional[WorldTile]] # North, North East, East, South East, South, South West, West, North West
     tileSetIndex: Optional[int] = None
+
+    def draw(self) -> None:
+        self.__drawableTile.draw()
 
     @property
     def entropy(self) -> Entropy:
@@ -28,17 +31,17 @@ class WorldTile:
         return (neighbourIndex + 4) % 8
 
     def updateViewForCollapsed(self, tileSetTile: TileSetTile) -> None:
-        self.drawableTile.setImage(tileSetTile.image)
+        self.__drawableTile.setImage(tileSetTile.image)
         if tileSetTile.fill is not None:
-            self.drawableTile.setFill(tileSetTile.fill.value)
+            self.__drawableTile.setFill(tileSetTile.fill.value)
         else:
-            self.drawableTile.setDrawRectangle(False)
-        self.drawableTile.text = tileSetTile.text
+            self.__drawableTile.setDrawRectangle(False)
+        self.__drawableTile.text = tileSetTile.text
 
     def updateViewForEntropy(self) -> None:
-        self.drawableTile.text = str(self.entropy)
+        self.__drawableTile.text = str(self.entropy)
 
     def clearView(self) -> None:
-        self.drawableTile.setDrawRectangle(True)
-        self.drawableTile.setImage(None)
+        self.__drawableTile.setDrawRectangle(True)
+        self.__drawableTile.setImage(None)
         self.updateViewForEntropy()
