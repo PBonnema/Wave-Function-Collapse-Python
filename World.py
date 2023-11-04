@@ -115,11 +115,10 @@ class World:
     def __updateNeighbourEntropy(self, updatedTile: WorldTile) -> None:
         for neighbourIndex, neighbour in enumerate(updatedTile.neighbours):
             if neighbour is not None and not neighbour.isCollapsed:
+                updatedTileIndex = WorldTile.calculateOppositeNeighbourIndex(neighbourIndex)
                 possibilitiesChanged = False
                 for tileSetIndex, stillPossible in enumerate(neighbour.tileSetPossibilities):
                     if stillPossible:
-                        # TODO move this line up
-                        updatedTileIndex = WorldTile.calculateOppositeNeighbourIndex(neighbourIndex)
                         possible = False
                         # TODO optimize by not doing all tileSetPossibilities but first filter on which are still possible. Hmm, is probably not an optimization at all
                         # TODO possibly optimize by also passing along which tileset possiblity of the updated Tile was updated and only check that one

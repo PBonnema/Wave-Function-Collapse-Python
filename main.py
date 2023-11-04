@@ -1,3 +1,5 @@
+from typing import Optional
+
 import graphics as g
 
 from NoTilePossibilitiesError import NoTilePossibilitiesError
@@ -281,8 +283,9 @@ def main() -> None:
         # ],
     ])
 
-    window = g.GraphWin("My WFC World", 1280, 960, autoflush=False)
+    window: Optional[g.GraphWin] = None
     try:
+        window = g.GraphWin("My WFC World", 1280, 960, autoflush=False)
         world = World(20, 15, 64, tileSet, window)
         world.draw()
 
@@ -298,7 +301,8 @@ def main() -> None:
                 print("No tile possibilities remaining. Starting over...")
             g.update()
     finally:
-        window.close()
+        if window is not None:
+            window.close()
 
 
 if __name__ == '__main__':
