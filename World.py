@@ -2,6 +2,7 @@ import random
 from typing import List
 import graphics as g
 
+from NoTilePossibilitiesError import NoTilePossibilitiesError
 from DrawableTile import DrawableTile
 from TileSet import TileSet
 from WorldTile import WorldTile
@@ -103,7 +104,10 @@ class World:
         tile.tileSetPossibilities = [False] * len(self.__tileSet.tiles)
 
         # Except for a randomly chosen possibility
-        tile.tileSetIndex = random.choice(tilePossibilityIndices)[0]
+        try:
+            tile.tileSetIndex = random.choice(tilePossibilityIndices)[0]
+        except IndexError as e:
+            raise NoTilePossibilitiesError from e
         tile.tileSetPossibilities[tile.tileSetIndex] = True
 
         tile.updateViewForCollapsed(self.__tileSet.tiles[tile.tileSetIndex])
@@ -114,8 +118,11 @@ class World:
                 possibilitiesChanged = False
                 for tileSetIndex, stillPossible in enumerate(neighbour.tileSetPossibilities):
                     if stillPossible:
+                        # TODO move this line up
                         updatedTileIndex = WorldTile.calculateOppositeNeighbourIndex(neighbourIndex)
                         possible = False
+                        # TODO optimize by not doing all tileSetPossibilities but first filter on which are still possible. Hmm, is probably not an optimization at all
+                        # TODO possibly optimize by also passing along which tileset possiblity of the updated Tile was updated and only check that one
                         for updatedTileSetIndex, updatedStillPossible in enumerate(updatedTile.tileSetPossibilities):
                             if updatedStillPossible and self.__tileSet.tileRestrictions[tileSetIndex][updatedTileSetIndex][updatedTileIndex]:
                                 possible = True
@@ -127,4 +134,5 @@ class World:
                     neighbour.updateViewForEntropy()
 
                     # Recursively update entropy of the neighbours of the neighbour
+                    # TODO visualize by setting tile fillings on tiles/neighbours being examined, updating the window, and waiting for the mouse to click.
                     self.__updateNeighbourEntropy(neighbour)

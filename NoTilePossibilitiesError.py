@@ -1,0 +1,2 @@
+﻿class NoTilePossibilitiesError(Exception):
+    pass

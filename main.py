@@ -1,5 +1,6 @@
 import graphics as g
 
+from NoTilePossibilitiesError import NoTilePossibilitiesError
 from TileSet import TileSet
 from TileSetTile import TileSetTile, TileSetColor
 from World import World
@@ -42,10 +43,10 @@ def main() -> None:
         ],
         [
             (False, True, False, True, True, True, False, True),
-            (False, True, False, True, False, True, False, True),
-            (False, True, False, True, False, True, False, True),
-            (False, True, False, True, False, True, True, True),
-            (False, True, False, True, True, True, False, True),
+            (False, True, True, True, False, True, True, True),
+            (True, True, False, True, False, True, True, True),
+            (True, True, True, True, False, True, False, True),
+            (True, True, True, True, True, True, True, True),
             # (False, True, False, True, False, True, False, True),
             # (False, True, False, True, False, True, False, True),
             # (False, True, False, True, False, True, False, True),
@@ -59,10 +60,10 @@ def main() -> None:
         ],
         [
             (False, True, False, True, False, True, True, True),
-            (False, True, False, True, False, True, False, True),
-            (False, True, True, True, False, True, False, True),
-            (False, True, False, True, False, True, False, True),
-            (False, True, False, True, False, True, False, True),
+            (False, True, True, True, True, True, False, True),
+            (True, True, False, True, True, True, False, True),
+            (True, True, True, True, True, True, True, True),
+            (True, True, True, True, False, True, False, True),
             # (False, True, False, True, False, True, False, True),
             # (False, True, False, True, False, True, False, True),
             # (False, True, False, True, False, True, False, True),
@@ -76,10 +77,10 @@ def main() -> None:
         ],
         [
             (False, True, True, True, False, True, False, True),
-            (False, True, False, True, False, True, False, True),
-            (False, True, False, True, False, True, False, True),
-            (False, True, False, True, False, True, False, True),
-            (False, True, False, True, False, True, False, True),
+            (False, True, False, True, True, True, True, True),
+            (True, True, True, True, True, True, True, True),
+            (True, True, False, True, True, True, False, True),
+            (True, True, False, True, False, True, True, True),
             # (False, True, False, True, False, True, False, True),
             # (False, True, False, True, False, True, False, True),
             # (False, True, False, True, False, True, False, True),
@@ -93,10 +94,10 @@ def main() -> None:
         ],
         [
             (True, True, False, True, False, True, False, True),
-            (True, True, False, True, False, True, False, True),
-            (False, True, False, True, False, True, False, True),
-            (False, True, False, True, False, True, False, True),
-            (False, True, False, True, False, True, False, True),
+            (True, True, True, True, True, True, True, True),
+            (False, True, False, True, True, True, True, True),
+            (False, True, True, True, True, True, False, True),
+            (False, True, True, True, False, True, True, True),
             # (False, True, False, True, False, True, False, True),
             # (False, True, False, True, False, True, False, True),
             # (False, True, False, True, False, True, False, True),
@@ -288,10 +289,13 @@ def main() -> None:
         while True:
             window.getMouse()  # Pause to view result
             world.clear()
-            while not world.doWaveFunctionCollapseStep():
-                # pass
-                window.getMouse()  # Pause to view result
-                g.update()
+            try:
+                while not world.doWaveFunctionCollapseStep():
+                    pass
+                    # window.getMouse()  # Pause to view result
+                    # g.update()
+            except NoTilePossibilitiesError:
+                print("No tile possibilities remaining. Starting over...")
             g.update()
     finally:
         window.close()
