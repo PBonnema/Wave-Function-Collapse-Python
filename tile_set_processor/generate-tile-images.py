@@ -2,11 +2,8 @@ import os
 from PIL import Image
 
 
-def main() -> None:
-    tileSizeInImage = 64
-    scaleToPixels = 64
-    imagePath = "./assets/roads2W.png"
-    imageFileName = imagePath[imagePath.rindex("/")+1:imagePath.rindex(".")]
+def generateTileImages(imagePath: str, tileSizeInImage: int, scaleToPixels: int) -> None:
+    imageFileName = imagePath[imagePath.rindex("/") + 1:imagePath.rindex(".")]
     tilePath = f"./assets/{imageFileName}-generated"
     if not os.path.exists(tilePath):
         os.makedirs(tilePath)
@@ -17,10 +14,14 @@ def main() -> None:
         for row in range(rows):
             for column in range(columns):
                 bb = (column * tileSizeInImage, row * tileSizeInImage, (column + 1) * tileSizeInImage, (row + 1) * tileSizeInImage)
-                tile = im.resize((scaleToPixels, scaleToPixels), box = bb)
+                tile = im.resize((scaleToPixels, scaleToPixels), box=bb)
                 tileFile = f"./{tilePath}/{imageFileName}-{column}-{row}.png"
                 open(tileFile, "+ab").close()
                 tile.save(tileFile)
+
+
+def main() -> None:
+    generateTileImages("./assets/roads2W.png", 64, 64)
 
 
 if __name__ == '__main__':
