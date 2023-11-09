@@ -148,7 +148,6 @@ class WfcWorld:
                             window.update()
                             # window.getMouse()
                             # Recursively update entropy of the neighbours of the neighbour
-                            # TODO visualize by setting tile fillings on tiles/neighbours being examined, updating the window, and waiting for the mouse to click.
                             self.__updateNeighbourEntropy(neighbour)
 
                     window.update()
