@@ -15,3 +15,4 @@ class TileSet:
 
     tiles: List[TileSetTile]
     tileRestrictions: List[List[TileSet.TileSetRule]]
+    tileSize: int

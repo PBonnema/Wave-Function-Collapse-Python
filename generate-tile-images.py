@@ -21,7 +21,10 @@ def generateTileImages(imagePath: str, tileSizeInImage: int, scaleToPixels: int)
 
 
 def main() -> None:
-    generateTileImages("./assets/roads2W.png", 64, 64)
+    # generateTileImages("./assets/roads2W.png", 64, 64)
+    # generateTileImages("./assets/Dungeon Tile Set.png", 16, 16)
+    # generateTileImages("./assets/terrain-map-v7.png", 32, 32)
+    generateTileImages("./assets/map1.png", 16, 16)
 
 
 if __name__ == '__main__':

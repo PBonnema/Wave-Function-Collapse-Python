@@ -285,14 +285,13 @@ def main() -> None:
     # ])
 
     rulesFile = "./assets/roads2W-tiles/rules.json"
-    tileSize = 64
 
     with (open(rulesFile, "r") as f):
         def decoder(d: dict):
             # Detect the type by doing duck typing
-            if 'tiles' in d and 'tileRestrictions' in d:
+            if 'tiles' in d and 'tileRestrictions' in d and 'tileSize' in d:
                 # TODO convert the lists to tuples
-                return TileSet(d['tiles'], d['tileRestrictions'])
+                return TileSet(d['tiles'], d['tileRestrictions'], d['tileSize'])
             elif 'text' in d and 'fill' in d and 'image' in d:
                 return TileSetTile(d['text'], d['fill'], d['image'])
             return d
@@ -302,7 +301,7 @@ def main() -> None:
     try:
         # Width and height should be a multiple of at least 128 and be less than the full screen on 1080p
         window = g.GraphWin("My WFC World", 1792, 896, autoflush=False)
-        world = World(window.width // tileSize, window.height // tileSize, tileSize, window)
+        world = World(window.width // tileSet.tileSize, window.height // tileSet.tileSize, tileSet.tileSize, window)
         wfcWorld = WfcWorld(tileSet, world)
         world.draw()
 
