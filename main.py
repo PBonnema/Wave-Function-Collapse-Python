@@ -300,7 +300,7 @@ def main() -> None:
     window: Optional[g.GraphWin] = None
     try:
         # Width and height should be a multiple of at least 128 and be less than the full screen on 1080p
-        window = g.GraphWin("My WFC World", 1792, 896, autoflush=False)
+        window = g.GraphWin("My WFC World", 128 * 14, 128 * 7, autoflush=False)
         world = World(window.width // tileSet.tileSize, window.height // tileSet.tileSize, tileSet.tileSize, window)
         wfcWorld = WfcWorld(tileSet, world)
         world.draw()
