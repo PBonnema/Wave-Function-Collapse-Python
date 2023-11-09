@@ -35,6 +35,10 @@ class DrawableTile:
             text)
         self.__originalDrawableTileScope = self.__currentDrawableTileScope
 
+    @property
+    def window(self) -> g.GraphWin:
+        return self.__window
+
     def draw(self) -> None:
         if self.__rectangle is not None:
             self.__rectangle.draw(self.__window)

@@ -5,6 +5,7 @@ import graphics as g
 from NoTilePossibilitiesError import NoTilePossibilitiesError
 from TileSet import TileSet
 from TileSetTile import TileSetTile, TileSetColor
+from WfcWorld import WfcWorld
 from World import World
 
 
@@ -284,8 +285,11 @@ def main() -> None:
     # ])
 
     rulesFile = "./assets/roads2W-tiles/rules.json"
+    tileSize = 64
+
     with (open(rulesFile, "r") as f):
         def decoder(d: dict):
+            # Detect the type by doing duck typing
             if 'tiles' in d and 'tileRestrictions' in d:
                 # TODO convert the lists to tuples
                 return TileSet(d['tiles'], d['tileRestrictions'])
@@ -296,15 +300,17 @@ def main() -> None:
 
     window: Optional[g.GraphWin] = None
     try:
-        window = g.GraphWin("My WFC World", 1280, 960, autoflush=False)
-        world = World(20, 15, 64, tileSet, window)
+        # Width and height should be a multiple of at least 128 and be less than the full screen on 1080p
+        window = g.GraphWin("My WFC World", 1792, 896, autoflush=False)
+        world = World(window.width // tileSize, window.height // tileSize, tileSize, window)
+        wfcWorld = WfcWorld(tileSet, world)
         world.draw()
 
         while True:
             window.getMouse()  # Pause to view result
-            world.clear()
+            wfcWorld.clear()
             try:
-                while not world.doWaveFunctionCollapseStep():
+                while not wfcWorld.doWaveFunctionCollapseStep():
                     # pass
                     window.update()
                     # window.getMouse()  # Pause to view result
