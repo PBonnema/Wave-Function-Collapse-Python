@@ -24,11 +24,10 @@ class WfcWorld:
             for x, drawableTile in enumerate(rowDrawableTiles):
                 # Create a WcfTile and link it to its neighbours
                 # Fetch some neighbours that already exist
-                # TODO len(rowWorldTiles) is just == x right?
-                northNeighbour = worldTiles[-1][len(rowWorldTiles)] if y > 0 else None
-                northEastNeighbour = worldTiles[-1][len(rowWorldTiles) + 1] if y > 0 and x < width - 1 else None
+                northNeighbour = worldTiles[-1][x] if y > 0 else None
+                northEastNeighbour = worldTiles[-1][x + 1] if y > 0 and x < width - 1 else None
                 westNeighbour = rowWorldTiles[-1] if x > 0 else None
-                northWestNeighbour = worldTiles[-1][len(rowWorldTiles) - 1] if x > 0 and y > 0 else None
+                northWestNeighbour = worldTiles[-1][x - 1] if x > 0 and y > 0 else None
 
                 # North, North East, East, South East, South, South West, West, North West
                 neighbours = [northNeighbour, northEastNeighbour, None, None, None, None, westNeighbour, northWestNeighbour]
