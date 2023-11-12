@@ -2,8 +2,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import List, Optional
 
-from DrawableTile import DrawableTile
-from TileSetTile import TileSetTile
+from ..DrawableTile import DrawableTile
+from .TileSetTile import TileSetTile
 
 
 @dataclass

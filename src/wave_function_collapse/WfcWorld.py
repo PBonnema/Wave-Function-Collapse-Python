@@ -1,10 +1,10 @@
 import random
 from typing import List
 
-from NoTilePossibilitiesError import NoTilePossibilitiesError
-from TileSet import TileSet
-from WfcWorldTile import WfcWorldTile
-from World import World
+from .NoTilePossibilitiesError import NoTilePossibilitiesError
+from .TileSet import TileSet
+from .WfcWorldTile import WfcWorldTile
+from ..World import World
 
 
 class WfcWorld:

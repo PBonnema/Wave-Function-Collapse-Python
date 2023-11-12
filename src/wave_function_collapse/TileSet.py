@@ -2,7 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import List, Tuple
 
-from TileSetTile import TileSetTile
+from .TileSetTile import TileSetTile
 
 
 # Lees de matrix als:

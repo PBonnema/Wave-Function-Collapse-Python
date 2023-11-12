@@ -5,10 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Tile Set Processor",
+            "name": "Python: generate-tile-set-rules.py",
             "type": "python",
             "request": "launch",
-            "program": "tile_set_processor/main.py",
+            "program": "generate-tile-set-rules.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Python: generate-tile-images.py",
+            "type": "python",
+            "request": "launch",
+            "program": "generate-tile-images.py",
             "console": "integratedTerminal",
             "justMyCode": true
         },

@@ -4,8 +4,8 @@ from typing import List, Dict, Tuple, cast
 
 from PIL import Image
 
-from TileSet import TileSet
-from TileSetTile import TileSetTile
+from src.wave_function_collapse.TileSet import TileSet
+from src.wave_function_collapse.TileSetTile import TileSetTile
 
 
 def calculateSimilarity(image: Image.Image, image2: Image.Image, ruleIndex: int) -> int:

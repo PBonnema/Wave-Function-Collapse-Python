@@ -2,8 +2,8 @@ import dataclasses
 from typing import Optional
 import graphics as g
 
-from DrawableTileScope import DrawableTileScope
-from NoRectangleShownError import NoRectangleShownError
+from .DrawableTileScope import DrawableTileScope
+from .NoRectangleShownError import NoRectangleShownError
 
 
 class DrawableTile:

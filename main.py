@@ -2,11 +2,11 @@ import json
 from typing import Optional
 import graphics as g
 
-from NoTilePossibilitiesError import NoTilePossibilitiesError
-from TileSet import TileSet
-from TileSetTile import TileSetTile, TileSetColor
-from WfcWorld import WfcWorld
-from World import World
+from src.wave_function_collapse.NoTilePossibilitiesError import NoTilePossibilitiesError
+from src.wave_function_collapse.TileSet import TileSet
+from src.wave_function_collapse.TileSetTile import TileSetTile, TileSetColor
+from src.wave_function_collapse.WfcWorld import WfcWorld
+from src.World import World
 
 
 def main() -> None:

@@ -1,7 +1,7 @@
 ﻿from typing import List
 import graphics as g
 
-from DrawableTile import DrawableTile
+from .DrawableTile import DrawableTile
 
 
 class World:
