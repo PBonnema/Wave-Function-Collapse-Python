@@ -27,13 +27,13 @@ class WfcWorldTile:
     def calculateOppositeNeighbourIndex(neighbourIndex) -> int:
         return (neighbourIndex + 4) % 8
 
-    def updateViewForCollapsed(self, tileSetTile: TileSetTile) -> None:
-        self.drawableTile.setImage(tileSetTile.image)
-        if tileSetTile.fill is not None:
-            self.drawableTile.setFill(tileSetTile.fill.value)
+    def updateViewForCollapsed(self, tile: TileSetTile) -> None:
+        self.drawableTile.setImage(tile.image)
+        if tile.fill is not None:
+            self.drawableTile.setFill(tile.fill.value)
         else:
             self.drawableTile.setDrawRectangle(False)
-        self.drawableTile.text = tileSetTile.text
+        self.drawableTile.text = tile.text
 
     def updateViewForEntropy(self) -> None:
         self.drawableTile.text = str(self.entropy)

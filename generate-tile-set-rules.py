@@ -63,10 +63,10 @@ def generateTileSetRules(tileImageDirectory: str, maxDifferingPixels: int, tileS
 
 
 def main() -> None:
-    # generateTileSetRules("./assets/roads2W-tiles", 10, 64)
+    generateTileSetRules("./assets/roads2W-tiles", 10, 64)
     # generateTileSetRules("./assets/Dungeon Tile Set-tiles", 4, 16)
     # generateTileSetRules("./assets/terrain-map-v7-generated", 6, 32)
-    generateTileSetRules("./assets/map1-generated", 4, 16)
+    # generateTileSetRules("./assets/map1-generated", 4, 16)
 
 
 if __name__ == '__main__':

@@ -5,6 +5,14 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Python: tile-set-editor-main.py",
+            "type": "python",
+            "request": "launch",
+            "program": "tile-set-editor-main.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
             "name": "Python: generate-tile-set-rules.py",
             "type": "python",
             "request": "launch",

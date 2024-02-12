@@ -13,9 +13,8 @@ class DrawableTile:
 
     def __init__(self, position: g.Point, size: g.Point, window: g.GraphWin, drawRectangle: bool = True, text: Optional[str] = None, imagePath: Optional[str] = None) -> None:
         self.__position: g.Point = position
-        self.__size: g.Point = size
         self.__midPoint: g.Point = g.Point(position.getX() + size.getX() / 2.0, position.getY() + size.getY() / 2.0)
-        self.__oppositePoint: g.Point = g.Point(self.__position.getX() + self.__size.getX(), self.__position.getY() + self.__size.getY())
+        self.__oppositePoint: g.Point = g.Point(position.getX() + size.getX(), position.getY() + size.getY())
 
         # Create the assets in reverse Z-order (from bottom to top)
         self.__image: Optional[g.Image] = g.Image(self.__midPoint, imagePath) if imagePath is not None else None
