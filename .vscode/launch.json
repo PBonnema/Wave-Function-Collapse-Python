@@ -5,6 +5,14 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Python: main.py",
+            "type": "python",
+            "request": "launch",
+            "program": "main.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
             "name": "Python: tile-set-editor-main.py",
             "type": "python",
             "request": "launch",
@@ -25,14 +33,6 @@
             "type": "python",
             "request": "launch",
             "program": "generate-tile-images.py",
-            "console": "integratedTerminal",
-            "justMyCode": true
-        },
-        {
-            "name": "Python: main.py",
-            "type": "python",
-            "request": "launch",
-            "program": "main.py",
             "console": "integratedTerminal",
             "justMyCode": true
         }
